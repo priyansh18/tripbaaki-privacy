@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A TripBaaki trip for you</title>
-<style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:480px;margin:40px auto;padding:0 20px;line-height:1.6;color:#0E2A24;background:#F4FBF8;text-align:center}.code{font-size:44px;font-weight:700;letter-spacing:8px;background:#F4B860;border:2px solid #0E6255;border-radius:16px;padding:16px;margin:24px 0}.btn{display:block;background:#0E6255;color:#F4FBF8;text-decoration:none;padding:16px;border-radius:999px;font-weight:600;margin:12px 0}.alt{background:#fff;color:#0E6255;border:2px solid #0E6255}p{color:rgba(14,42,36,.7)}.soon{font-size:13px;background:#fff3da;border-radius:12px;padding:10px;margin-top:20px}</style>
+<style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:480px;margin:40px auto;padding:0 20px;line-height:1.6;color:#0E2A24;background:#F4FBF8;text-align:center}.code{font-size:44px;font-weight:700;letter-spacing:8px;background:#F4B860;border:2px solid #0E6255;border-radius:16px;padding:16px;margin:24px 0}.btn{display:block;background:#0E6255;color:#F4FBF8;text-decoration:none;padding:16px;border-radius:999px;font-weight:600;margin:12px 0}.alt{background:#fff;color:#0E6255;border:2px solid #0E6255}p{color:rgba(14,42,36,.7)}</style>
 </head>
 <body>
 <h1>TripBaaki</h1>
 <p>Someone added you to a trip. No install needed to see what you owe.</p>
 <div class="code" id="code">......</div>
-<a class="btn" id="open" href="#">Open in TripBaaki</a>
-<a class="btn alt" id="play" href="https://play.google.com/store/apps/details?id=com.priyansh.tripbaaki">Get it on Google Play</a>
-<p class="soon">The no-install balance view for this link is still being built (Day 2 of the app's build cycle) -- for now, ask the trip organizer to show you the balance from their phone, or check back soon.</p>
+<a class="btn" id="view" href="#">See your balance (no install)</a>
+<a class="btn alt" id="open" href="#">Open in TripBaaki app</a>
+<a class="btn alt" href="https://play.google.com/store/apps/details?id=com.priyansh.tripbaaki">Get it on Google Play</a>
 <p style="font-size:13px"><a href="index.html">Privacy policy</a></p>
 <script>
 (function(){
@@ -20,8 +20,10 @@
   var code=q.toUpperCase().replace(/[^A-HJ-NP-Z2-9]/g,'').slice(0,6);
   if(code.length===6){
     document.getElementById('code').textContent=code;
+    document.getElementById('view').href='https://priyansh18.github.io/tripbaaki-web/t/'+code;
     document.getElementById('open').href='intent://t/'+code+'#Intent;scheme=tripbaaki;package=com.priyansh.tripbaaki;S.browser_fallback_url='+encodeURIComponent('https://play.google.com/store/apps/details?id=com.priyansh.tripbaaki')+';end';
   } else {
+    document.getElementById('view').style.display='none';
     document.getElementById('open').style.display='none';
   }
 })();
